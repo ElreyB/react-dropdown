@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import Header from './Header';
 
 class Dropdownn extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      headerItem: "Select location",
+      listOpen: false,
       location: [
         {
           title: 'New York',
@@ -31,11 +34,27 @@ class Dropdownn extends Component {
         }
       ]
     }
+
+    this.handleHeaderClick = this.handleHeaderClick.bind(this);
+
   }
+
+  handleHeaderClick() {
+    this.setState((prevState) => {
+      return {
+        listOpen: !prevState.listOpen
+      }
+    });
+  }
+
   render() {
     return (
       <div>
-        hello {this.state.location[0].title}
+        <Header
+          headerItem={this.state.headerItem}
+          handleHeaderClick={this.handleHeaderClick}
+        />
+        {`${this.state.listOpen}`}
       </div>
     );
   }
