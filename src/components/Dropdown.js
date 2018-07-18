@@ -53,8 +53,8 @@ class Dropdownn extends Component {
         <Header
           headerItem={this.state.headerItem}
           handleHeaderClick={this.handleHeaderClick}
+          listOpen={this.state.listOpen}
         />
-        {`${this.state.listOpen}`}
       </div>
     );
   }

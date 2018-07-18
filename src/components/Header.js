@@ -6,7 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const Header = (props) => (
   <div onClick={props.handleHeaderClick}>
     <HeaderItem header={props.headerItem} />
-    <FontAwesomeIcon icon="angle-down" />
+    {props.listOpen ? <FontAwesomeIcon icon="angle-up" /> : <FontAwesomeIcon icon="angle-down" />}
+
   </div>
 );
 
