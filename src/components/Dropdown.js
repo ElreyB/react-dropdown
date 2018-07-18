@@ -10,26 +10,38 @@ class Dropdownn extends Component {
       listOpen: false,
       locations: [
         {
+          id: 0,
+          key: location,
           title: 'New York',
           selected: false
         },
         {
+          id: 1,
+          key: location,
           title: 'Dublin',
           selected: false
         },
         {
+          id: 2,
+          key: location,
           title: 'California',
           selected: false
         },
         {
+          id: 3,
+          key: location,
           title: 'Istanbul',
           selected: false
         },
         {
+          id: 4,
+          key: location,
           title: 'Izmir',
           selected: false
         },
         {
+          id: 5,
+          key: location,
           title: 'Oslo',
           selected: false
         }
@@ -37,6 +49,7 @@ class Dropdownn extends Component {
     }
 
     this.handleHeaderClick = this.handleHeaderClick.bind(this);
+    this.handleListItemClick = this.handleListItemClick.bind(this);
 
   }
 
@@ -48,6 +61,20 @@ class Dropdownn extends Component {
     });
   }
 
+  handleListItemClick(index) {
+    console.log(index);
+    // const item = e.target.innerText;
+    // const temp = this.state.locations[index]
+    // console.log(temp);
+    // temp.selected = !temp.selected
+    // console.log(this.state.locations[0]);
+    // this.setState((prevState) => {
+    //   return {
+    //     locations: prevState.lc
+    //   }
+    // });
+  }
+
   render() {
     return (
       <div>
@@ -56,7 +83,7 @@ class Dropdownn extends Component {
           handleHeaderClick={this.handleHeaderClick}
           listOpen={this.state.listOpen}
         />
-        {this.state.listOpen && <List locations={this.state.locations} />}
+        {this.state.listOpen && <List locations={this.state.locations} onClick={this.handleListItemClick} />}
       </div>
     );
   }

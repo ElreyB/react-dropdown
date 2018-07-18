@@ -1,8 +1,8 @@
 import React from 'react';
 
 const ListItem = (props) => (
-  <div>
-    <li>{props.listItem}</li>
+  <div >
+    <li onClick={props.onClick(props.listItemKey)}>{props.listItem}</li>
   </div>
 );
 

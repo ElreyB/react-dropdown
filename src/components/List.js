@@ -6,7 +6,7 @@ const List = (props) => (
     <ul>
       {props.locations.map((location, index) => {
         return (
-          <ListItem key={index} listItem={location.title} />
+          <ListItem key={index} listItem={location.title} listItemKey={location.key} onClick={props.onClick} />
         )
       })}
     </ul>
