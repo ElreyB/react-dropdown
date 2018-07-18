@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './Header';
+import List from './List';
 
 class Dropdownn extends Component {
   constructor(props) {
@@ -7,7 +8,7 @@ class Dropdownn extends Component {
     this.state = {
       headerItem: "Select location",
       listOpen: false,
-      location: [
+      locations: [
         {
           title: 'New York',
           selected: false
@@ -55,6 +56,7 @@ class Dropdownn extends Component {
           handleHeaderClick={this.handleHeaderClick}
           listOpen={this.state.listOpen}
         />
+        <List locations={this.state.locations} />
       </div>
     );
   }
