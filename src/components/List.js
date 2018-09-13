@@ -1,13 +1,19 @@
 import React from 'react';
 import ListItem from './ListItem';
 
-const List = (props) => (
+const List = ({ locations, ...props }) => (
   <div>
     <ul>
-      {props.locations.map((location, index) => {
+      {locations.map((location, index) => {
         return (
-          <ListItem key={index} listItem={location.title} listItemKey={location.key} onClick={props.onClick} />
-        )
+          <ListItem
+            key={index}
+            listItem={location.title}
+            selected={location.selected}
+            listItemKey={index}
+            {...props}
+          />
+        );
       })}
     </ul>
   </div>

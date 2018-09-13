@@ -6,7 +6,7 @@ class Dropdownn extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      headerItem: "Select location",
+      headerItem: 'Select location',
       listOpen: false,
       locations: [
         {
@@ -46,33 +46,34 @@ class Dropdownn extends Component {
           selected: false
         }
       ]
-    }
+    };
 
     this.handleHeaderClick = this.handleHeaderClick.bind(this);
     this.handleListItemClick = this.handleListItemClick.bind(this);
-
   }
 
   handleHeaderClick() {
-    this.setState((prevState) => {
+    this.setState(prevState => {
       return {
         listOpen: !prevState.listOpen
-      }
+      };
     });
   }
 
-  handleListItemClick(index) {
-    console.log(index);
-    // const item = e.target.innerText;
-    // const temp = this.state.locations[index]
-    // console.log(temp);
-    // temp.selected = !temp.selected
-    // console.log(this.state.locations[0]);
-    // this.setState((prevState) => {
-    //   return {
-    //     locations: prevState.lc
-    //   }
-    // });
+  handleListItemClick(locationIndex) {
+    const temp = this.state.locations[locationIndex];
+    temp.selected = !temp.selected;
+    this.setState(prevState => {
+      const locations = prevState.locations.map(
+        (location, index) =>
+          index === locationIndex
+            ? { ...location, selected: temp.selected }
+            : location
+      );
+      return {
+        locations
+      };
+    });
   }
 
   render() {
@@ -83,11 +84,15 @@ class Dropdownn extends Component {
           handleHeaderClick={this.handleHeaderClick}
           listOpen={this.state.listOpen}
         />
-        {this.state.listOpen && <List locations={this.state.locations} onClick={this.handleListItemClick} />}
+        {this.state.listOpen && (
+          <List
+            locations={this.state.locations}
+            onClick={this.handleListItemClick}
+          />
+        )}
       </div>
     );
   }
 }
-
 
 export default Dropdownn;
